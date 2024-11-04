@@ -1,0 +1,162 @@
+unit uRelVendasdiariasVIEW;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.Phys, FireDAC.Phys.FB, FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
+  FireDAC.Phys.IBBase, Datasnap.Provider, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Datasnap.DBClient, QRCtrls, QuickRpt, Vcl.ExtCtrls,
+  uRelatorioVendasDiariasControl, frxClass, frxDBSet;
+
+type
+  TfrmVendasdiaria = class(TForm)
+    Edt_DataInicial: TMaskEdit;
+    Edt_DataFinal: TMaskEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    QVendas: TClientDataSet;
+    ds_Vendas: TDataSource;
+    btnVializa: TButton;
+    btnImprimir: TButton;
+    DSP_Vendas: TDataSetProvider;
+    frxDBD_Vendasdiarias: TfrxDBDataset;
+    frxVendasdiarias: TfrxReport;
+    QVendasID: TStringField;
+    QVendasNUMPEDI: TStringField;
+    QVendasDATA_EMISSAO: TDateField;
+    QVendasCOD_CLIENTE: TStringField;
+    QVendasNOME: TStringField;
+    QVendasID_PRODUTO: TStringField;
+    QVendasCODIGO_BAR: TStringField;
+    QVendasDESCRICAO: TStringField;
+    QVendasQUANTIDADE: TSingleField;
+    QVendasVALOR_UNITARIO: TSingleField;
+    QVendasVALOR_TOTAL_PROD: TSingleField;
+    QMaisVendido: TClientDataSet;
+    DS_MaisVendido: TDataSource;
+    DSP_MaisVendido: TDataSetProvider;
+    QMaisVendidoID_PRODUTO: TStringField;
+    QMaisVendidoCODIGO_BAR: TStringField;
+    QMaisVendidoDESCRICAO: TStringField;
+    QMaisVendidoQTDVENDIDO: TIntegerField;
+    frxDBDoisPrdMaisvendidos: TfrxDBDataset;
+    frxDoisPrdmaisVendidos: TfrxReport;
+    FDConnection: TFDConnection;
+    QryMaisVendido: TFDQuery;
+    FDPhysFBDriverLink1: TFDPhysFBDriverLink;
+    FDQuery2: TFDQuery;
+    QryMaisVendidoID_PRODUTO: TStringField;
+    QryMaisVendidoCODIGO_BAR: TStringField;
+    QryMaisVendidoDESCRICAO: TStringField;
+    QryMaisVendidoQTDVENDIDO: TIntegerField;
+    procedure btnVializaClick(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+    FRelatorioVendasDiariasControl: TRelatorioVendasDiariasControl;
+  public
+    { Public declarations }
+    LTipoRelatorio: string;
+  end;
+
+var
+  frmVendasdiaria: TfrmVendasdiaria;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmVendasdiaria.btnImprimirClick(Sender: TObject);
+var
+  strDatINI, strDatFIN : string;
+begin
+
+  if Edt_DataInicial.Text <> '  /  /    ' then
+    strDatINI := Edt_DataInicial.Text
+  else
+    strDatINI := '';
+
+  if Edt_DataFinal.Text <> '  /  /    ' then
+    strDatFIN := Edt_DataFinal.Text
+  else
+    strDatFIN := '';
+
+  if LTipoRelatorio = 'Vendasdireta' then
+  begin
+    FRelatorioVendasDiariasControl := TRelatorioVendasDiariasControl.Create;
+    try
+      DSP_Vendas.DataSet := FRelatorioVendasDiariasControl.Obter(strDatINI, strDatFIN);
+      QVendas.Close;
+      QVendas.open;
+    finally
+      FRelatorioVendasDiariasControl.Free;
+    end;
+    frxVendasdiarias.Print;
+  end
+  else
+  begin
+    FRelatorioVendasDiariasControl := TRelatorioVendasDiariasControl.Create;
+    try
+      DSP_MaisVendido.DataSet := FRelatorioVendasDiariasControl.ObterDoisMaisVendido(strDatINI, strDatFIN);
+      QMaisVendido.Close;
+      QMaisVendido.open;
+    finally
+      FRelatorioVendasDiariasControl.Free;
+    end;
+    frxDoisPrdmaisVendidos.Print;
+  end;
+end;
+
+procedure TfrmVendasdiaria.btnVializaClick(Sender: TObject);
+var
+  strDatINI, strDatFIN : string;
+begin
+
+  if Edt_DataInicial.Text <> '  /  /    ' then
+    strDatINI := Edt_DataInicial.Text
+  else
+    strDatINI := '';
+
+  if Edt_DataFinal.Text <> '  /  /    ' then
+    strDatFIN := Edt_DataFinal.Text
+  else
+    strDatFIN := '';
+
+  if LTipoRelatorio = 'Vendasdireta' then
+  begin
+    FRelatorioVendasDiariasControl := TRelatorioVendasDiariasControl.Create;
+    try
+      DSP_Vendas.DataSet := FRelatorioVendasDiariasControl.Obter(strDatINI, strDatFIN);
+      QVendas.Close;
+      QVendas.open;
+    finally
+      FRelatorioVendasDiariasControl.Free;
+    end;
+    frxVendasdiarias.ShowReport();
+  end
+  else
+  begin
+    FRelatorioVendasDiariasControl := TRelatorioVendasDiariasControl.Create;
+    try
+      DSP_MaisVendido.DataSet := FRelatorioVendasDiariasControl.ObterDoisMaisVendido(strDatINI, strDatFIN);
+      QMaisVendido.Close;
+      QMaisVendido.open;
+    finally
+      FRelatorioVendasDiariasControl.Free;
+    end;
+    frxDoisPrdmaisVendidos.ShowReport();
+  end;
+end;
+
+procedure TfrmVendasdiaria.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := cafree;
+end;
+
+end.

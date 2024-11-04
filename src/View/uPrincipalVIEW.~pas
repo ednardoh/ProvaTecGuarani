@@ -1,0 +1,53 @@
+unit uPrincipalVIEW;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, Dialogs, Menus, Classes;
+
+type
+  TfrmPrincipal = class(TForm)
+    MainMenu_Principal: TMainMenu;
+    Cadastros1: TMenuItem;
+    Clientes1: TMenuItem;
+    N1: TMenuItem;
+    Produtos1: TMenuItem;
+    EntradadeProdutos1: TMenuItem;
+    Entradas1: TMenuItem;
+    Vendas1: TMenuItem;
+    PDV1: TMenuItem;
+    Relatrios1: TMenuItem;
+    Vendas2: TMenuItem;
+    Sair1: TMenuItem;
+    procedure Sair1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if Application.messageBox('Deseja Realmente sair do Sistema?','Confirmação',mb_YesNo+mb_IconInformation+mb_DefButton2) = IdYes then
+    begin
+      Application.Terminate;
+    end
+  else
+    Action := canone;
+end;
+
+procedure TfrmPrincipal.Sair1Click(Sender: TObject);
+begin
+ close;
+end;
+
+end.

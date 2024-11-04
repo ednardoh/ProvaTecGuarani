@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.6.17" DotMatrixReport="True" IniFile="\Relatorios" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PreviewOptions.ZoomMode="zmPageWidth" PrintOptions.Printer="Padrão" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="45600,1819093981" ReportOptions.Description.Text="" ReportOptions.LastChange="45600,3030412384" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxDMPPage Name="Page1" Orientation="poLandscape" PaperWidth="297,179808071374" PaperHeight="211,401946802909" PaperSize="9" LeftMargin="5,07999671916879" RightMargin="5,07999671916879" TopMargin="4,49791376176403" BottomMargin="4,49791376176403" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0" HGuides.Text="" VGuides.Text="" FontStyle="0">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="34" Left="0" Top="17" Width="1084,8">
+      <TfrxDMPMemoView Name="DMPMemo1" Align="baWidth" AllowVectorExport="True" Left="0" Top="0" Width="1084,8" Height="17" FontStyle="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" TruncOutboundText="False" VAlign="vaCenter" Text="Relatório de Vendas diária"/>
+      <TfrxDMPLineView Name="DMPLine2" AllowVectorExport="True" Left="408" Top="25,5" Width="268,8" Height="0" Color="0"/>
+    </TfrxReportTitle>
+    <TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="17" Left="0" Top="68" Width="1084,8">
+      <TfrxDMPMemoView Name="DMPMemo3" AllowVectorExport="True" Left="0" Top="0" Width="67,2" Height="17" Frame.Typ="0" TruncOutboundText="False" Text="NºPEDI"/>
+      <TfrxDMPMemoView Name="DMPMemo4" AllowVectorExport="True" Left="67,2" Top="0" Width="115,2" Height="17" Frame.Typ="0" TruncOutboundText="False" Text="Dt.Emissão"/>
+      <TfrxDMPMemoView Name="DMPMemo6" AllowVectorExport="True" Left="192" Top="0" Width="96" Height="17" Frame.Typ="0" TruncOutboundText="False" Text="Id.Produto"/>
+      <TfrxDMPMemoView Name="DMPMemo7" AllowVectorExport="True" Left="297,6" Top="0" Width="96" Height="17" Frame.Typ="0" TruncOutboundText="False" Text="Cód.Barras"/>
+      <TfrxDMPMemoView Name="DMPMemo8" AllowVectorExport="True" Left="441,6" Top="0" Width="201,6" Height="17" Frame.Typ="0" TruncOutboundText="False" Text="Descrição do Produto"/>
+      <TfrxDMPMemoView Name="DMPMemo9" AllowVectorExport="True" Left="710,4" Top="0" Width="67,2" Height="17" Frame.Typ="0" HAlign="haRight" TruncOutboundText="False" Text="Qtde."/>
+      <TfrxDMPMemoView Name="DMPMemo10" AllowVectorExport="True" Left="796,8" Top="0" Width="115,2" Height="17" Frame.Typ="0" HAlign="haRight" TruncOutboundText="False" Text="Vl.Unitário"/>
+      <TfrxDMPMemoView Name="DMPMemo11" AllowVectorExport="True" Left="931,2" Top="0" Width="153,6" Height="17" Frame.Typ="0" HAlign="haRight" TruncOutboundText="False" Text="Tot. Produto"/>
+    </TfrxPageHeader>
+    <TfrxGroupHeader Name="GroupHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="34" Left="0" Top="119" Width="1084,8" Condition="frxDBD_Vendasdiarias.&#34;COD_CLIENTE&#34;">
+      <TfrxDMPMemoView Name="DMPMemo12" Align="baWidth" AllowVectorExport="True" Left="76,8" Top="0" Width="1008" Height="17" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" FontStyle="1" Frame.Typ="0" ParentFont="False" TruncOutboundText="False" VAlign="vaCenter" Text="[frxDBD_Vendasdiarias.&#34;COD_CLIENTE&#34;]"/>
+      <TfrxDMPMemoView Name="DMPMemo15" AllowVectorExport="True" Left="144" Top="0" Width="297,6" Height="17" DataField="NOME" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" FontStyle="1" Frame.Typ="0" ParentFont="False" WordWrap="False" TruncOutboundText="False" Text="[frxDBD_Vendasdiarias.&#34;NOME&#34;]"/>
+      <TfrxDMPMemoView Name="DMPMemo5" AllowVectorExport="True" Left="0" Top="0" Width="76,8" Height="17" Frame.Typ="0" TruncOutboundText="False" Text="Cliente:"/>
+    </TfrxGroupHeader>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="17" Left="0" Top="170" Width="1084,8" ColumnWidth="0" ColumnGap="0" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" RowCount="0">
+      <TfrxDMPMemoView Name="DMPMemo13" AllowVectorExport="True" Left="0" Top="0" Width="67,2" Height="17" DataField="NUMPEDI" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" Frame.Typ="0" TruncOutboundText="False" Text="[frxDBD_Vendasdiarias.&#34;NUMPEDI&#34;]"/>
+      <TfrxDMPMemoView Name="DMPMemo14" AllowVectorExport="True" Left="67,2" Top="0" Width="105,6" Height="17" DataField="DATA_EMISSAO" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" Frame.Typ="0" TruncOutboundText="False" Text="[frxDBD_Vendasdiarias.&#34;DATA_EMISSAO&#34;]"/>
+      <TfrxDMPMemoView Name="DMPMemo16" AllowVectorExport="True" Left="182,4" Top="0" Width="96" Height="17" DataField="ID_PRODUTO" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" Frame.Typ="0" TruncOutboundText="False" Text="[frxDBD_Vendasdiarias.&#34;ID_PRODUTO&#34;]"/>
+      <TfrxDMPMemoView Name="DMPMemo17" AllowVectorExport="True" Left="288" Top="0" Width="144" Height="17" DataField="CODIGO_BAR" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" Frame.Typ="0" TruncOutboundText="False" Text="[frxDBD_Vendasdiarias.&#34;CODIGO_BAR&#34;]"/>
+      <TfrxDMPMemoView Name="DMPMemo18" AllowVectorExport="True" Left="441,6" Top="0" Width="259,2" Height="17" DataField="DESCRICAO" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" Frame.Typ="0" TruncOutboundText="False" Text="[frxDBD_Vendasdiarias.&#34;DESCRICAO&#34;]"/>
+      <TfrxDMPMemoView Name="DMPMemo19" AllowVectorExport="True" Left="710,4" Top="0" Width="76,8" Height="17" DataField="QUANTIDADE" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" Frame.Typ="0" HAlign="haRight" TruncOutboundText="False" Text="[frxDBD_Vendasdiarias.&#34;QUANTIDADE&#34;]"/>
+      <TfrxDMPMemoView Name="DMPMemo20" AllowVectorExport="True" Left="806,4" Top="0" Width="105,6" Height="17" DataField="VALOR_UNITARIO" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" Frame.Typ="0" HAlign="haRight" TruncOutboundText="False" Text="[frxDBD_Vendasdiarias.&#34;VALOR_UNITARIO&#34;]"/>
+      <TfrxDMPMemoView Name="DMPMemo21" AllowVectorExport="True" Left="931,2" Top="0" Width="153,6" Height="17" DataField="VALOR_TOTAL_PROD" DataSet="frxDBD_Vendasdiarias" DataSetName="frxDBD_Vendasdiarias" Frame.Typ="0" HAlign="haRight" TruncOutboundText="False" Text="[frxDBD_Vendasdiarias.&#34;VALOR_TOTAL_PROD&#34;]"/>
+    </TfrxMasterData>
+    <TfrxGroupFooter Name="GroupFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="0" Left="0" Top="204" Width="1084,8" Child="Child1"/>
+    <TfrxPageFooter Name="PageFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="34" Left="0" Top="357" Width="1084,8">
+      <TfrxDMPMemoView Name="DMPMemo22" Align="baWidth" AllowVectorExport="True" Left="0" Top="0" Width="1084,8" Height="0" Frame.Typ="4" Frame.Width="2" TruncOutboundText="False" Text=""/>
+      <TfrxDMPMemoView Name="DMPMemo23" AllowVectorExport="True" Left="0" Top="0" Width="0" Height="17" AutoWidth="True" Frame.Typ="0" TruncOutboundText="False" Text="[Date] [Time]"/>
+      <TfrxDMPMemoView Name="DMPMemo24" Align="baRight" AllowVectorExport="True" Left="998,4" Top="0" Width="76,8" Height="17" Frame.Typ="0" HAlign="haRight" TruncOutboundText="False" Text="Page [Page#]"/>
+    </TfrxPageFooter>
+    <TfrxChild Name="Child1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="34" Left="0" Top="221" Width="1084,8" ToNRows="0" ToNRowsMode="rmCount">
+      <TfrxDMPMemoView Name="DMPMemo25" AllowVectorExport="True" Left="931,2" Top="17" Width="153,6" Height="17" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" FontStyle="1" Frame.Typ="0" HAlign="haRight" ParentFont="False" TruncOutboundText="False" Text="[SUM(&#60;frxDBD_Vendasdiarias.&#34;VALOR_TOTAL_PROD&#34;&#62;,MasterData1)]"/>
+      <TfrxDMPLineView Name="DMPLine1" AllowVectorExport="True" Left="916,8" Top="8,5" Width="172,8" Height="0" Color="0"/>
+    </TfrxChild>
+    <TfrxReportSummary Name="ReportSummary1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="51" Left="0" Top="289" Width="1084,8">
+      <TfrxDMPMemoView Name="DMPMemo26" AllowVectorExport="True" Left="931,2" Top="34" Width="153,6" Height="17" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" FontStyle="1" Frame.Typ="0" HAlign="haRight" ParentFont="False" TruncOutboundText="False" Text="[SUM(&#60;frxDBD_Vendasdiarias.&#34;VALOR_TOTAL_PROD&#34;&#62;,MasterData1)]"/>
+      <TfrxDMPMemoView Name="DMPMemo27" AllowVectorExport="True" Left="758,4" Top="34" Width="124,8" Height="17" Frame.Typ="0" TruncOutboundText="False" Text="Total Geral :"/>
+    </TfrxReportSummary>
+  </TfrxDMPPage>
+</TfrxReport>

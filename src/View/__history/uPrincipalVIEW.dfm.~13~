@@ -1,0 +1,66 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 177
+  Top = 111
+  Caption = 'Prova Tecnica (Guarani)  - Sistema de Pedido'
+  ClientHeight = 492
+  ClientWidth = 781
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu_Principal
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MainMenu_Principal: TMainMenu
+    Left = 304
+    Top = 48
+    object Cadastros1: TMenuItem
+      Caption = 'Cadastros'
+      object Clientes1: TMenuItem
+        Caption = 'Cli&entes'
+        ShortCut = 16453
+        OnClick = Clientes1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Produtos1: TMenuItem
+        Caption = '&Produtos'
+        ShortCut = 16464
+        OnClick = Produtos1Click
+      end
+    end
+    object EntradadeProdutos1: TMenuItem
+      Caption = 'Entrada de Produtos'
+      object Entradas1: TMenuItem
+        Caption = 'Entradas'
+        ShortCut = 16452
+        OnClick = Entradas1Click
+      end
+    end
+    object Vendas1: TMenuItem
+      Caption = '&Venda no Balc'#227'o'
+      object PDV1: TMenuItem
+        Caption = 'Fazer Venda'
+        ShortCut = 113
+      end
+    end
+    object Relatrios1: TMenuItem
+      Caption = '&Relat'#243'rios'
+      object Vendas2: TMenuItem
+        Caption = 'Relat'#243'rio de Vendas'
+      end
+    end
+    object Sair1: TMenuItem
+      Caption = 'Sai&r'
+      ShortCut = 16467
+      OnClick = Sair1Click
+    end
+  end
+end

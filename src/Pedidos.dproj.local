@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/10/25 12:26:22.000.422,=C:\Users\ednar\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/11/02 02:12:07.000.287,=C:\Users\ednar\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/11/02 02:17:31.000.607,C:\Users\ednar\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\Sistemas\Guarani\src\View\uPrincipalVIEW.dfm</Transaction>
+    <Transaction>2024/11/02 02:17:31.000.607,C:\Users\ednar\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Sistemas\Guarani\src\View\uPrincipalVIEW.pas</Transaction>
+    <Transaction>2024/11/02 02:17:49.000.885,C:\Users\ednar\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Sistemas\Guarani\src\Pedidos.dproj</Transaction>
+    <Transaction>2024/11/02 02:24:25.000.315,=C:\Sistemas\Guarani\src\Conexao\UConexaoBDpas.pas</Transaction>
+    <Transaction>2024/11/02 02:24:25.000.083,=C:\Sistemas\Guarani\src\Conexao\UConecta.pas</Transaction>
+    <Transaction>2024/11/02 02:24:25.000.089,=C:\Sistemas\Guarani\src\Conexao\uConexao.pas</Transaction>
+    <Transaction>2024/11/02 15:39:00.000.602,=C:\Sistemas\Guarani\src\Model\uEnumerado.pas</Transaction>
+    <Transaction>2024/11/02 15:39:00.000.596,=C:\Sistemas\Guarani\src\Model\uClienteModel.pas</Transaction>
+    <Transaction>2024/11/02 15:50:56.000.815,=C:\Sistemas\Guarani\src\DAO\uClienteDAO.pas</Transaction>
+    <Transaction>2024/11/02 15:52:06.000.831,=C:\Sistemas\Guarani\src\Controller\uSistemaControl.pas</Transaction>
+    <Transaction>2024/11/02 19:48:28.000.495,=C:\Sistemas\Guarani\src\Controller\uClienteControl.pas</Transaction>
+    <Transaction>2024/11/02 19:53:40.000.272,=C:\Sistemas\Guarani\src\View\uCadClientesVIEW.pas</Transaction>
+    <Transaction>2024/11/03 02:41:01.000.107,=C:\Sistemas\Guarani\src\Model\uProdutoModel.pas</Transaction>
+    <Transaction>2024/11/03 02:41:07.000.240,=C:\Sistemas\Guarani\src\DAO\uProdutoDAO.pas</Transaction>
+    <Transaction>2024/11/03 02:41:20.000.420,=C:\Sistemas\Guarani\src\Controller\uProdutoControl.pas</Transaction>
+    <Transaction>2024/11/03 03:40:47.000.182,=C:\Sistemas\Guarani\src\View\uCadProdutosVIEW.pas</Transaction>
+    <Transaction>2024/11/03 20:07:06.000.058,=C:\Sistemas\Guarani\src\Model\uEntradasProdutosModel.pas</Transaction>
+    <Transaction>2024/11/03 20:07:17.000.069,=C:\Sistemas\Guarani\src\DAO\uEntradasProdutosDAO.pas</Transaction>
+    <Transaction>2024/11/03 20:07:23.000.891,=C:\Sistemas\Guarani\src\Controller\uEntradasProdutosControl.pas</Transaction>
+    <Transaction>2024/11/03 22:11:02.000.182,=C:\Sistemas\Guarani\src\View\uEntradaProdutoVIEW.pas</Transaction>
+    <Transaction>2024/11/03 22:26:19.000.387,=C:\Sistemas\Guarani\src\View\uPesquisaVIEW.pas</Transaction>
+    <Transaction>2024/11/04 00:18:33.000.182,=C:\Sistemas\Guarani\src\View\UPedidoDeVendaVIEW.pas</Transaction>
+    <Transaction>2024/11/04 00:21:05.000.795,=C:\Sistemas\Guarani\src\Model\uPedidoXProdutosModel.pas</Transaction>
+    <Transaction>2024/11/04 00:21:05.000.795,=C:\Sistemas\Guarani\src\Model\uPedidovendaModel.pas</Transaction>
+    <Transaction>2024/11/04 00:21:24.000.242,=C:\Sistemas\Guarani\src\DAO\uPedidovendaDAO.pas</Transaction>
+    <Transaction>2024/11/04 00:21:24.000.256,=C:\Sistemas\Guarani\src\DAO\uPedidoXProdutosDAO.pas</Transaction>
+    <Transaction>2024/11/04 00:21:34.000.808,=C:\Sistemas\Guarani\src\Controller\uPedidoXProdutosControl.pas</Transaction>
+    <Transaction>2024/11/04 00:21:34.000.798,=C:\Sistemas\Guarani\src\Controller\uPedidovendaControl.pas</Transaction>
+    <Transaction>2024/11/04 00:23:29.000.905,=C:\Sistemas\Guarani\src\View\uPrintPEDVIEW.pas</Transaction>
+    <Transaction>2024/11/04 02:43:30.000.425,=C:\Sistemas\Guarani\src\View\uRelVendasdiariasVIEW.pas</Transaction>
+    <Transaction>2024/11/04 02:54:06.000.366,=C:\Sistemas\Guarani\src\Model\uRelatorioVendasDiariasModel.pas</Transaction>
+    <Transaction>2024/11/04 02:54:14.000.426,=C:\Sistemas\Guarani\src\DAO\uRelatorioVendasDiariasDAO.pas</Transaction>
+    <Transaction>2024/11/04 02:54:20.000.792,=C:\Sistemas\Guarani\src\Controller\uRelatorioVendasDiariasControl.pas</Transaction>
+  </Transactions>
+</BorlandProject>

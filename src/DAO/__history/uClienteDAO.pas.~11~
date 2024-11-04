@@ -1,0 +1,200 @@
+unit uClienteDAO;
+
+interface
+
+uses
+  FireDAC.Comp.Client, uConexao, uClienteModel, System.SysUtils, uSistemaControl,
+  Data.DB, Vcl.Dialogs;
+
+type
+  TClienteDao = class
+  private
+    FConexao: TConexao;
+  public
+    constructor Create;
+
+    function Incluir(AClienteModel: TClienteModel): Boolean;
+    function Alterar(AClienteModel: TClienteModel): Boolean;
+    function Excluir(AClienteModel: TClienteModel): Boolean;
+    function GetId: Integer;
+    function Obter(AorderBy: Integer;AValorparcial: string): TFDQuery;
+    function ObterCLIByID(AValorpesquisa: string): TFDQuery;
+  end;
+
+implementation
+
+{ TClienteDao }
+
+constructor TClienteDao.Create;
+begin
+  FConexao := TSistemaControl.GetInstance().Conexao;
+end;
+
+function TClienteDao.GetId: Integer;
+var
+  vQry: TFDQuery;
+begin
+  vQry := FConexao.CriarQuery();
+  try
+    vQry.Open('SELECT coalesce(MAX(CODIGO),0)+1 AS CODIGO FROM CLIENTES');
+    try
+      Result := vQry.Fields[0].AsInteger;
+    finally
+      vQry.Close;
+    end;
+  finally
+    vQry.Free;
+  end;
+end;
+
+function TClienteDao.Incluir(AClienteModel: TClienteModel): Boolean;
+var
+  vStoreProc: TFDStoredProc;
+begin
+  vStoreProc := FConexao.CriaFDStoredProc();
+  try
+    try
+      vStoreProc.StoredProcName :='PROC_CLIENTES';
+      vStoreProc.Connection.StartTransaction;
+      vStoreProc.Params.Clear;
+      vStoreProc.params.createparam(ftString, 'TIPO'        ,ptInput);
+      vStoreProc.params.createparam(ftInteger,'PAR_CODIGO'  ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_CNPJ_CPF',ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_TELEFONE',ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_NOME'    ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_ENDERECO',ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_BAIRRO'  ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_CIDADE'  ,ptInput);
+      vStoreProc.params.createparam(ftInteger,'PAR_NUMERO'  ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_CEP'     ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_UF'      ,ptInput);
+      //parametros
+      vStoreProc.Params.ParamByName('TIPO').AsString      := 'I'; //INCLUIR
+      vStoreProc.Params.ParamByName('PAR_CODIGO').Value   := AClienteModel.Codigo;
+      vStoreProc.Params.ParamByName('PAR_CNPJ_CPF').Value := AClienteModel.CNPJ_CPF;
+      vStoreProc.Params.ParamByName('PAR_TELEFONE').Value := AClienteModel.TELEFONE;
+      vStoreProc.Params.ParamByName('PAR_NOME').Value     := AClienteModel.Nome;
+      vStoreProc.Params.ParamByName('PAR_ENDERECO').Value := AClienteModel.Endereco;
+      vStoreProc.Params.ParamByName('PAR_BAIRRO').Value   := AClienteModel.Bairro;
+      vStoreProc.Params.ParamByName('PAR_CIDADE').Value   := AClienteModel.Cidade;
+      vStoreProc.Params.ParamByName('PAR_NUMERO').Value   := AClienteModel.Numero;
+      vStoreProc.Params.ParamByName('PAR_CEP').Value      := AClienteModel.Cep;
+      vStoreProc.Params.ParamByName('PAR_UF').Value       := AClienteModel.UF;
+      vStoreProc.ExecProc;
+
+      vStoreProc.Connection.Commit;
+      Result := True;
+      except
+      on E: Exception do
+        begin
+          messagedlg('Erro: ' + E.Message);
+          vStoreProc.Connection.Rollback;  //desfaz a transação
+        end;
+    end;
+  finally
+    vStoreProc.Free;
+  end;
+end;
+
+function TClienteDao.Excluir(AClienteModel: TClienteModel): Boolean;
+var
+  vStoreProc: TFDStoredProc;
+begin
+  vStoreProc := FConexao.CriaFDStoredProc();
+  try
+    try
+      vStoreProc.StoredProcName :='PROC_CLIENTES';
+      vStoreProc.Connection.StartTransaction;
+      vStoreProc.Params.Clear;
+      vStoreProc.params.createparam(ftString, 'TIPO'        ,ptInput);
+      vStoreProc.params.createparam(ftInteger,'PAR_CODIGO'  ,ptInput);
+      vStoreProc.Params.ParamByName('TIPO').AsString      := 'E'; //EXCLUIR
+      vStoreProc.Params.ParamByName('PAR_CODIGO').Value   := AClienteModel.Codigo;
+      vStoreProc.ExecProc;
+      vStoreProc.Connection.Commit;
+      Result := True;
+      except
+      on E: Exception do
+        begin
+          messagedlg('Erro: ' + E.Message);
+          vStoreProc.Connection.Rollback;  //desfaz a transação
+        end;
+    end;
+  finally
+    vStoreProc.Free;
+  end;
+end;
+
+function TClienteDao.Alterar(AClienteModel: TClienteModel): Boolean;
+var
+  vStoreProc: TFDStoredProc;
+begin
+  vStoreProc := FConexao.CriaFDStoredProc();
+  try
+    try
+      vStoreProc.StoredProcName :='PROC_CLIENTES';
+      vStoreProc.Connection.StartTransaction;
+      vStoreProc.params.createparam(ftString, 'TIPO'        ,ptInput);
+      vStoreProc.params.createparam(ftInteger,'PAR_CODIGO'  ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_CNPJ_CPF',ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_TELEFONE',ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_NOME'    ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_ENDERECO',ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_BAIRRO'  ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_CIDADE'  ,ptInput);
+      vStoreProc.params.createparam(ftInteger,'PAR_NUMERO'  ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_CEP'     ,ptInput);
+      vStoreProc.params.createparam(ftString, 'PAR_UF'      ,ptInput);
+      //parametros
+      vStoreProc.Params.ParamByName('TIPO').AsString      := 'A'; //ALTERAR
+      vStoreProc.Params.ParamByName('PAR_CODIGO').Value   := AClienteModel.Codigo;
+      vStoreProc.Params.ParamByName('PAR_CNPJ_CPF').Value := AClienteModel.CNPJ_CPF;
+      vStoreProc.Params.ParamByName('PAR_TELEFONE').Value := AClienteModel.TELEFONE;
+      vStoreProc.Params.ParamByName('PAR_NOME').Value     := AClienteModel.Nome;
+      vStoreProc.Params.ParamByName('PAR_ENDERECO').Value := AClienteModel.Endereco;
+      vStoreProc.Params.ParamByName('PAR_BAIRRO').Value   := AClienteModel.Bairro;
+      vStoreProc.Params.ParamByName('PAR_CIDADE').Value   := AClienteModel.Cidade;
+      vStoreProc.Params.ParamByName('PAR_NUMERO').Value   := AClienteModel.Numero;
+      vStoreProc.Params.ParamByName('PAR_CEP').Value      := AClienteModel.Cep;
+      vStoreProc.Params.ParamByName('PAR_UF').Value       := AClienteModel.UF;
+      vStoreProc.ExecProc;
+      vStoreProc.Connection.Commit;
+      except
+      on E: Exception do
+        begin
+          messagedlg('Erro: ' + E.Message);
+          vStoreProc.Connection.Rollback;  //desfaz a transação
+        end;
+      end;
+      Result := True;
+  finally
+    vStoreProc.Free;
+  end;
+end;
+
+function TClienteDao.Obter(AorderBy: Integer;AValorparcial: string): TFDQuery;
+var
+  vQry: TFDQuery;
+begin
+  vQry := FConexao.CriarQuery();
+
+  if AValorparcial = '' then
+    vQry.Open('select codigo, cnpj_cpf, telefone, nome, endereco, bairro, Cidade, numero, Cep, UF from CLIENTES order by '+AorderBy.ToString)
+  else
+    vQry.Open('select codigo, cnpj_cpf, telefone, nome, endereco, bairro, Cidade, numero, Cep, UF from CLIENTES where NOME like ' + quotedstr(AValorparcial) + ' order by '+AorderBy.ToString);
+
+  Result := vQry;
+end;
+
+function TClienteDao.ObterCLIByID(AValorpesquisa: string): TFDQuery;
+var
+  vQry: TFDQuery;
+begin
+  vQry := FConexao.CriarQuery();
+
+  vQry.Open('select codigo, cnpj_cpf, telefone, nome, endereco, bairro, Cidade, numero, Cep, UF from CLIENTES where codigo = '+AValorpesquisa);
+
+  Result := vQry;
+end;
+
+end.

@@ -1,0 +1,18 @@
+program Pedidos;
+
+uses
+  Vcl.Forms,
+  uPrincipalVIEW in 'View\uPrincipalVIEW.pas' {frmPrincipal},
+  UConecta in 'Conexao\UConecta.pas',
+  uConexao in 'Conexao\uConexao.pas',
+  UConexaoBDpas in 'Conexao\UConexaoBDpas.pas' {frmConectaDB};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmConectaDB, frmConectaDB);
+  Application.Run;
+end.
